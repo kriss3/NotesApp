@@ -6,6 +6,12 @@ namespace Notes.Views
 {
     public partial class ItemDetailPage : ContentPage
     {
+        private readonly ItemDetailViewModel viewModel;
+        public ItemDetailPage(ItemDetailViewModel viewModel)
+        {
+            InitializeComponent();
+            BindingContext = this.viewModel = viewModel;
+        }
         public ItemDetailPage()
         {
             InitializeComponent();
