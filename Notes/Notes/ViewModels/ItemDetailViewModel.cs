@@ -20,6 +20,8 @@ namespace Notes.ViewModels
             set => SetProperty(ref text, value);
         }
 
+        public string DisplayMessage { get; set; }
+
         public string Description
         {
             get => description;
@@ -39,6 +41,14 @@ namespace Notes.ViewModels
             }
         }
 
+        public Command CancelItemCommand { get; }
+        public Command SaveItemCommand { get; set; }
+        public ItemDetailViewModel()
+        {
+            CancelItemCommand = new Command(OnCancelItem);
+            SaveItemCommand = new Command(OnSaveItem);
+        }
+
         public async void LoadItemId(string itemId)
         {
             try
@@ -52,6 +62,18 @@ namespace Notes.ViewModels
             {
                 Debug.WriteLine("Failed to Load Item");
             }
+        }
+
+        private void OnCancelItem(object obj) 
+        {
+            DisplayMessage = "Cancel option was selected.\nData not saved.";
+            Application.Current.MainPage.DisplayAlert("Canel Selection", DisplayMessage, "Cancel");
+        }
+    
+        private void OnSaveItem(object obj) 
+        {
+            DisplayMessage = "Save was clicked.";
+            Application.Current.MainPage.DisplayAlert("Save Selection", DisplayMessage, "Btn 1", "Btn 2");
         }
     }
 }

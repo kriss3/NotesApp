@@ -4,6 +4,11 @@
              x:Class="Notes.Views.ItemDetailPage"
              Title="{Binding Title}">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cancel" Command="{Binding CancelItemCommand}" />
+        <ToolbarItem Text="Save" Command="{Binding SaveItemCommand}"/>
+    </ContentPage.ToolbarItems>
+    
     <StackLayout Spacing="20" Padding="15">
         
         <Picker x:Name="NoteCourse" Title="Note course" FontSize="Medium">
